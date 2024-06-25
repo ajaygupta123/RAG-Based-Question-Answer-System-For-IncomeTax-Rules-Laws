@@ -1,0 +1,65 @@
+# RAG System for Income Tax Queries
+
+This repository contains a Retrieval-Augmented Generation (RAG) system designed to provide accurate responses to questions about government income tax rules and laws. The system leverages FAISS/AnnoyIndex for efficient document indexing, BERTRetrieval/DPRRetrieval for retrieval and GPT-2 for generating responses.
+
+## Features
+
+- **Efficient Document Retrieval**: Uses FAISS/AnnoyIndex for fast and accurate document indexing.
+- **Advanced Language Model**: Utilizes GPT-2 for generating coherent and contextually accurate responses.
+- **High Precision and Recall**: Designed to maximize precision and recall for user queries.
+- **Comprehensive Data Cleaning**: Implements robust data cleaning processes to ensure high-quality input data. Done via Chuncking and TextCleaning classes
+
+## System Architecture
+
+1. **User Query Input**: User submits a query regarding income tax rules/laws.
+2. **Document Indexing and  Retrieval**: The query is mapped against the FAISS index to retrieve the most relevant documents.
+3. **Response Generation**: The retrieved documents are passed to GPT-2 to generate a contextually accurate response.
+
+## Prerequisites
+can be found in requirements.txt file
+
+- Python 3.10+
+- PyTorch
+- transformers
+- faiss
+- sklearn
+- nltk
+- rouge
+
+'''
+## Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/income-tax-rag-system.git
+    cd income-tax-rag-system
+    ```
+
+2. Create a virtual environment and activate it:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+3. Install the required packages:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Usage
+
+1. **Data Preparation**: Ensure your data is preprocessed and clean.
+2. **Indexing**: Build the FAISS index using your dataset.
+3. **Querying**: Use the provided script to input a query and get a response.
+
+### Building the FAISS Index
+
+```python
+import faiss
+import numpy as np
+
+# Assuming `documents` is a list of document embeddings
+index = faiss.IndexFlatL2(dimension)  # Replace `dimension` with the embedding dimension
+index.add(np.array(documents))
+faiss.write_index(index, "faiss_index.bin")
+'''
